@@ -19,7 +19,7 @@ const options = {
                 parser: "MM/DD/YY",
                 tooltipFormat: "ll",
                 displayFormats: {
-                    month: "MMM-YY"
+                    month: "M-YY"
                 }
             },
             },
@@ -33,19 +33,20 @@ const options = {
                 beginAtZero: true,
                 // Include a dollar sign in the ticks
                 callback: function (value, index, values) {
-                return '$' + (value/1000) + 'k'
+                return '$' + value
                 },
             },
             },
         ],
     }
 }
-const CoinDetail = ({location, history, id}) => {
-    const [state] = useState(location.state)
-    console.log(id)
+const CoinDetail = ({location}) => {
+    //const [state] = useState(location.state)
+    console.log(location)
     const [data, setData] = useState({})
     const fetchData = async () => {
-        await axios.get(`https://api.coingecko.com/api/v3/coins/${state.id}/market_chart?vs_currency=usd&days=180`)
+        return ((location.state !== undefined) &&
+        await axios.get(`https://api.coingecko.com/api/v3/coins/${location.state.id}/market_chart?vs_currency=usd&days=180`)
             .then ( response => {
                 let chartData = []
                 for ( let dataObj of response.data.prices ) {
@@ -56,10 +57,10 @@ const CoinDetail = ({location, history, id}) => {
                     chartData.push(newChartData)
                 }
                 setData(chartData)
-            });
+            }));
     }
     useEffect(fetchData, [])
-        return (
+        return ((location.state !== undefined) &&
                 <div className='card text-center'>
                     <img src={location.state.image} className='detail-img card-img-top mx-auto mt-3 mb-1'/>
                     <div className="card-body">     
@@ -80,23 +81,27 @@ const CoinDetail = ({location, history, id}) => {
                                 <h5>$ {(location.state.cap/1000000000).toFixed(2)}B</h5>
                             </li>
                         </ul>
-                        {data?.length > 0 && (
-                            <Line 
-                                data={{ 
-                                    datasets: [
-                                        {
-                                            label: 'Price',
-                                            backgroundColor: 'rgba(21, 61, 239, 0.78)',
-                                            borderColor: 'rgba(21, 61, 239, 1)',
-                                            pointRadius: 0,
-                                            data: data
-                                        }
-                                    ] 
-                                }}
-                                options={ options }
-                            />
-                        )}
-                        <small>Last updated: {location.state.updated.slice(0,10)} {location.state.updated.slice(11,19)}</small>
+                            <li className='list-group-item'>
+                                {data?.length > 0 && (
+                                <Line 
+                                    data={{ 
+                                        datasets: [
+                                            {
+                                                label: 'Price',
+                                                backgroundColor: 'rgba(21, 61, 239, 0.78)',
+                                                borderColor: 'rgba(21, 61, 239, 1)',
+                                                pointRadius: 0,
+                                                data: data
+                                            }
+                                        ] 
+                                    }}
+                                    options={ options }
+                                />
+                                )}
+                            </li>
+                            <li className='list-group-item list-group-item-light'>
+                                <small>Last updated: {location.state.updated.slice(0,10)} {location.state.updated.slice(11,19)}</small>
+                            </li>
                     </div>
                 </div>
         )
