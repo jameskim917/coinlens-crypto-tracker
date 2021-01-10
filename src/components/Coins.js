@@ -7,7 +7,7 @@ function Coins({ id, image, symbol, name, rank, price, change24h, cap, high, low
     return (
         <div className='col-12 col-md-6 col-lg-4'>
             <img src={image} className='coins-img'/>
-            <div className='card w-75 mx-auto'>
+            <div className='card w-100 mx-auto'>
                 <div className="card-body text-center"> 
                     <h1 className='coin'>{symbol.toUpperCase()}</h1>
                     <h1 className='coin'>{name}</h1>
@@ -27,9 +27,8 @@ function Coins({ id, image, symbol, name, rank, price, change24h, cap, high, low
                         </li>
                     </ul>
                     <Link 
-                        id={id}
                         to={{
-                            pathname: `/:${id}`,
+                            pathname: `/:${name}`,
                             state: {
                                 id,
                                 image, 
