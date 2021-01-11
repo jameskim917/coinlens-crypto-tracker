@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 //import SearchPage from './Components/SearchPage.js';
 import axios from 'axios'
-import Coins from '../components/Coins.js';
-import SearchBar from '../components/Searchbar'
+import Coins from './Coins.js';
 
-const Home = ({ query }) => {
+const RenderHome = ({ query }) => {
     console.log(query)
     const [coins, setCoins] = useState([]);
     const [isLoading, setIsLoading] = useState(true) 
@@ -35,7 +34,7 @@ const Home = ({ query }) => {
                 })
             })
             return(
-            <div className='row'>
+            <div className='col'>
                 {queryCoins.map(coin => (
                     <Coins 
                         id = {coin.id}
@@ -53,7 +52,7 @@ const Home = ({ query }) => {
             )
         } else {
             return(
-            <div className='row'>
+            <div className='col'>
                 {coins.data.map(coin => (
                     <Coins 
                         id = {coin.id}
@@ -79,4 +78,4 @@ const Home = ({ query }) => {
     );
 }
 
-export default Home;
+export default RenderHome;

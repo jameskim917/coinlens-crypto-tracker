@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(180deg, #98A9C4 0%, #2F4C78 80.73%);
+    background-attachment: fixed;
+}
+
+.navbar-toggler-icon{
+    background-image: url(./assets/menu.svg)!important;
+}
+.navbar-toggler{
+    border: none;
+    outline: none;
+}

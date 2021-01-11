@@ -1,0 +1,11 @@
+.form-control:focus {
+    box-shadow: none;
+}
+.form-control {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 45px;
+    top: 80%;
+}
+.container {
+    padding: 0;
+}
