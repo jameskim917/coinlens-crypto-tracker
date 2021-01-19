@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 //import SearchPage from './Components/SearchPage.js';
 import axios from 'axios'
 import Coins from './Coins.js';
+import styled from 'styled-components'
 
 const RenderHome = ({ query }) => {
     console.log(query)
@@ -52,7 +53,7 @@ const RenderHome = ({ query }) => {
             )
         } else {
             return(
-            <div className='col'>
+            <Container className='col'>
                 {coins.data.map(coin => (
                     <Coins 
                         id = {coin.id}
@@ -66,7 +67,7 @@ const RenderHome = ({ query }) => {
                         updated = {coin.last_updated}
                     />
                 ))}    
-            </div>
+            </Container>
             )
         }
     }
@@ -79,3 +80,13 @@ const RenderHome = ({ query }) => {
 }
 
 export default RenderHome;
+
+const Container = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: auto;
+`;

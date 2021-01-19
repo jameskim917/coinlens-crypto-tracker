@@ -1,0 +1,12 @@
+.chartjs-render-monitor {
+    display: inline !important;
+    height: 95% !important;
+    width: 95% !important;
+}
+p {
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}

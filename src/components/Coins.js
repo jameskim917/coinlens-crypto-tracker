@@ -2,54 +2,56 @@ import React from 'react'
 import Proptypes from 'prop-types'
 import './Coins.css'
 import { Link } from 'react-router-dom'
-import { Col, Row, Button, Card } from 'react-bootstrap'
+import styled from 'styled-components'
 
 function Coins({ id, image, symbol, name, rank, price, change24h, cap, high, low, ath, updated }) { 
     return (
-                <Card className='card w-75 mb-5 mx-auto'>
                     
-                    <Card.Body className="card-body text-center"> 
-                        <img src={image} className='coins-img mb-2'/>
-                        <h1 className='coin'>{symbol.toUpperCase()}</h1>
-                        <h1 className='coin'>{name}</h1>
-                        <h4 className='coin'>#{rank}</h4>
-                        <ul class="list-group list-group-flush">
-                            <li className='list-group-item'>
-                                <small>Current Price</small>
-                                <h5>$ {price.toFixed(2)}</h5>
-                            </li>
-                            <li className='list-group-item'>
-                                <small>24h</small>
-                                <h5>{parseFloat(change24h).toFixed(2)}%</h5>
-                            </li>
-                            <li className='list-group-item'>
-                                <small>Marketcap Total</small>
-                                <h5>$ {(cap/1000000000).toFixed(2)}B</h5>
-                            </li>
-                        </ul>
-                        <Link 
-                            to={{
-                                pathname: `/:${name}`,
-                                state: {
-                                    id,
-                                    image, 
-                                    symbol, 
-                                    name, 
-                                    rank, 
-                                    price, 
-                                    change24h, 
-                                    cap, 
-                                    high, 
-                                    low, 
-                                    ath, 
-                                    updated 
-                                }
-                            }}
-                        >    
-                        <Button className="btn btn-primary px-4 py-2">More info</Button>    
-                        </Link>
-                    </Card.Body> 
-                </Card>
+                    <Card className="card"> 
+                        <Image>
+                            <img src={image} />
+                        </Image>
+                        <CardText>
+                                <h1 className='rank'>#{rank}</h1>
+                                <h1 className='symbol'>{symbol.toUpperCase()}</h1>
+                                <h1 className='name'>{name}</h1>
+                            <ul class="list-group list-group-flush">
+                                <li className='list-group-item'>
+                                    <p>Current Price</p>
+                                    <h2>$ {price.toFixed(2)}</h2>
+                                </li>
+                                <li className='list-group-item'>
+                                    <p>24h Change</p>
+                                    <h2>{parseFloat(change24h).toFixed(2)}%</h2>
+                                </li>
+                                <li className='list-group-item'>
+                                    <p>Marketcap Total</p>
+                                    <h2>$ {(cap/1000000000).toFixed(2)}B</h2>
+                                </li>
+                            </ul>
+                            <Link 
+                                to={{
+                                    pathname: `/:${name}`,
+                                    state: {
+                                        id,
+                                        image, 
+                                        symbol, 
+                                        name, 
+                                        rank, 
+                                        price, 
+                                        change24h, 
+                                        cap, 
+                                        high, 
+                                        low, 
+                                        ath, 
+                                        updated 
+                                    }
+                                }}
+                            >    
+                            <button>More info</button>    
+                            </Link>
+                        </CardText>
+                    </Card> 
         );
 };
 
@@ -65,3 +67,96 @@ Coins.propTypes = {
 };
 
 export default Coins
+
+const Card = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 20rem;
+    height: 100%;
+    overflow: auto;
+    margin: 2rem 2rem;
+    transition: all 0.2s ease-in;
+    background-color: rgba(103, 126, 160, 1);
+    border-radius: 15px;
+    border: none;
+`;
+const Image = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
+    width: 100%;
+    background: rgba(47, 76, 120, 1);
+    background-size: cover;
+
+    img {
+        transition: all 0.2s ease-in;
+        position: relative;
+        padding: 0;
+        height: 50px;
+        width: 50px;
+        border-radius: 45px;
+
+        &:hover {
+            box-shadow: 0px 17px 16px -11px rgba(47, 76, 120, 1);
+            transform: translateY(3px);
+        }
+    }
+`
+const CardText = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    .rank {
+        font-size: 1.5em;
+        font-weight: 400;
+        padding: 0.1rem;
+    }
+    .symbol {
+        font-size: 1.75em;
+        font-weight: 600;
+        padding: 0.1rem;
+    }
+    .name {
+        font-size: 2em;
+        font-weight: 700;
+        padding: 0.1rem;
+    }
+    ul {
+        list-style-type: none;
+        text-align: center;
+        padding: 1rem;
+    }
+    li {
+        padding: 0.1rem;
+    }
+    p {
+        font-size: 0.85em;
+        font-weight: 400;
+        color: rgba(179, 192, 211, 1);
+        padding: 0.1rem;
+    }
+    h2 {
+        font-weight: 600;
+    }
+    button {
+        border-radius: 45px;
+        border: none;
+        outline: none;
+        height: 2rem;
+        width: 7rem;
+        padding: 0.1rem;
+        color: rgba(47, 76, 120, 1);
+        transition: all 0.2s ease-in;
+
+        &:hover {
+            box-shadow: 0px 17px 16px -11px rgba(47, 76, 120, 1);
+            transform: translateY(1px);
+        }
+    }
+`

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import RenderHome from '../components/RenderHome'
 import './HomeSearch.css'
-import styled from "styled-components"
-import Background from '../components/Background'
-import { Container, Col, Jumbotron, Row, FormControl } from 'react-bootstrap'
+import styled from 'styled-components'
 
 function SearchBar() {
     const [items, setItems] = useState([])
@@ -36,33 +34,58 @@ function SearchBar() {
 
     return (
         <>
-        <Container style={{padding: 0}}>
-            
-                <Row className="m-0">
-                <Col style={{padding: 0}}>
-                    <Background/>
-                <Jumbotron style={{height: "150px"}}>
-                    
-                        <FormControl
-                            className="form-control mx-auto mt-5 w-75"
-                            placeholder="Search"
-                            onChange={onChange}
-                            value={value}
-                        />
-                        
-                </Jumbotron>
-                </Col>
-            </Row>
-        </Container>
-        <Container>
+        <Hero>
+            <form>
+                <Input
+                type="text"
+                className="search"
+                placeholder="Search"
+                onChange={onChange}
+                value={value}
+                />
+            </form>
+        </Hero>                
+        <Render>        
             <RenderHome 
                 query={results}
             />
-        </Container>
-        
+        </Render>
         </>
     )
 }
 
+const Hero = styled.div`
+    max-width: 1400px;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+`;
+const Render = styled.div`
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+`;
+const Input = styled.input`
+    border-radius: 45px;
+    border: none;
+    outline: none;
+    height: 2rem;
+    width: 15rem;
+    padding: 0.15rem 1rem;
+    margin-top: 50%;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        box-shadow: 0px 17px 16px -11px rgba(47, 76, 120, 1);
+        transform: translateY(3px);
+    }
+`;
 
 export default SearchBar

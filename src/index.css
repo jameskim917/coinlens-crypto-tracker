@@ -1,3 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: apple-system;
+    font-family: "Raleway", sans-serif;
+}
+
+button {
+    font-family: "Raleway", sans-serif;
+}
+input[type="text"]
+{
+    font-family: "Raleway", sans-serif;
+    font-size: 0.9rem;
 }

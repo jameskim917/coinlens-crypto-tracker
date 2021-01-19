@@ -13,16 +13,3 @@ body {
 .detail-img {
     max-width: 100px;
 }
-
-.card, .list-group, .list-group-item{
-    background-color: rgba(136, 159, 194, 0.98);
-    border-radius: 15px;
-    border: none;
-    z-index: 1;
-}
-
-.btn{
-    background-color: rgba(255, 255, 255, 0.29);
-    border-radius: 45px;
-    border-color: white;
-}
