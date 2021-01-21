@@ -16,7 +16,7 @@ function Navigation() {
                     <LinkWrapper>
                         <MenuLink href="/">Home</MenuLink>
                         <MenuLink href="/about">About</MenuLink>
-                        <Button>Get Free Bitcoin</Button>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PL0TCCwS6puAivSTnJdxXNIYMtdpovWYBV"><Button>Get Free Bitcoin</Button></a>
                     </LinkWrapper>
                 </Menu>
             </Container>
@@ -101,12 +101,11 @@ const LinkWrapper = styled.div`
         flex-direction: column;
         padding: 1rem;
         margin-top: 0.5rem;
-        background-color: rgba(255, 255, 255, 0.9);
+        background: rgba(121, 162, 210, 0.5);
         border-radius: 1.5rem;
-        @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-            -webkit-backdrop-filter: blur(35px);
-            backdrop-filter: blur(15px);
-            background-color: rgba(255, 255, 255, 0.4);
+        border: 2px solid rgba(255, 255, 255, 1);
+        @supports (backdrop-filter: none) {
+            backdrop-filter: blur(0.7rem);
         }
     }
 `;
@@ -126,17 +125,15 @@ const MenuLink = styled.a`
     }
 
     @media (max-width: 768px) {
-        background: rgba(179, 192, 211, 1);
-        border-radius: 1.5rem;
+        transition: all 0.2s ease-in;
         margin-bottom: 0.75rem;
         margin-right: 0;
-;
     }
 `;
 const Button = styled.button`
     font-size: 0.9rem;
-    background: rgba(47, 76, 120, 1);
-    border: none;
+    background: linear-gradient(264.93deg, #BCA4CE 0%, #7AA3D1 100%);
+    border: 2px solid rgba(255, 255, 255, 1);
     padding: 0.8rem 1.1rem;
     color: white;
     border-radius: 1.5rem;
@@ -154,5 +151,6 @@ const Button = styled.button`
     @media (max-width: 678px) {
         margin-left: 0rem;
         margin-top: 0.2rem;
+        background: linear-gradient(264.93deg, rgba(188, 164, 206, 0.8) 0%, rgba(188, 164, 206, 0.2) 100%);
     }
 `;

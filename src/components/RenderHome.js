@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Coins from './Coins.js';
 import styled from 'styled-components'
+import { PointSpreadLoading } from 'react-loadingg';
 
 const RenderHome = ({ query }) => {
     console.log(query)
@@ -20,9 +21,14 @@ const RenderHome = ({ query }) => {
     const renderElement = () => {
         if(isLoading === true) {
             return(
-            <div className='loader'>
-                <span className='loader__text'>'Loading...'</span>
-            </div>
+            <Container>
+                <Loading>
+                    <PointSpreadLoading
+                        color="white"
+                        size="small"
+                    />
+                </Loading>
+            </Container>
             )
         } else if (query.length > 0){
             let queryCoins = []
@@ -35,7 +41,7 @@ const RenderHome = ({ query }) => {
                 })
             })
             return(
-            <div className='col'>
+            <Container className='col'>
                 {queryCoins.map(coin => (
                     <Coins 
                         id = {coin.id}
@@ -49,7 +55,7 @@ const RenderHome = ({ query }) => {
                         updated = {coin.last_updated}
                     />
                 ))}    
-            </div>
+            </Container>
             )
         } else {
             return(
@@ -87,6 +93,9 @@ const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 1400px;
+    max-width: 1440px;
     margin: auto;
 `;
+const Loading = styled.div`
+    margin-top: 15em;
+`

@@ -5,11 +5,22 @@
 
 body {
     font-family: "Raleway", sans-serif;
+    background: linear-gradient(63.18deg, #6F6AE6 0%, #677EA0 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+@media (hover: none) {
+    body {
+        background: rgba(111, 106, 229, 1);
+    }
 }
 
 button {
     font-family: "Raleway", sans-serif;
 }
+
 input[type="text"]
 {
     font-family: "Raleway", sans-serif;

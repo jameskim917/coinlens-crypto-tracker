@@ -7,11 +7,11 @@ import styled from 'styled-components'
 function Coins({ id, image, symbol, name, rank, price, change24h, cap, high, low, ath, updated }) { 
     return (
                     
-                    <Card className="card"> 
-                        <Image>
+                    <Card className="card fade"> 
+                        <Image className="fade">
                             <img src={image} />
                         </Image>
-                        <CardText>
+                        <CardText className="fade">
                                 <h1 className='rank'>#{rank}</h1>
                                 <h1 className='symbol'>{symbol.toUpperCase()}</h1>
                                 <h1 className='name'>{name}</h1>
@@ -48,7 +48,7 @@ function Coins({ id, image, symbol, name, rank, price, change24h, cap, high, low
                                     }
                                 }}
                             >    
-                            <button>More info</button>    
+                            <button className="fade">More info</button>    
                             </Link>
                         </CardText>
                     </Card> 
@@ -78,9 +78,10 @@ const Card = styled.div`
     overflow: auto;
     margin: 2rem 2rem;
     transition: all 0.2s ease-in;
-    background-color: rgba(103, 126, 160, 1);
-    border-radius: 15px;
-    border: none;
+    background: linear-gradient(146.81deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.16) 100%);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
 `;
 const Image = styled.div`
     display: flex;
@@ -89,8 +90,6 @@ const Image = styled.div`
     align-items: center;
     height: 5em;
     width: 100%;
-    background: rgba(47, 76, 120, 1);
-    background-size: cover;
 
     img {
         transition: all 0.2s ease-in;
@@ -111,7 +110,7 @@ const CardText = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding-bottom: 1em;
     .rank {
         font-size: 1.5em;
         font-weight: 400;
@@ -138,7 +137,7 @@ const CardText = styled.div`
     p {
         font-size: 0.85em;
         font-weight: 400;
-        color: rgba(179, 192, 211, 1);
+        color: white;
         padding: 0.1rem;
     }
     h2 {
@@ -151,7 +150,11 @@ const CardText = styled.div`
         height: 2rem;
         width: 7rem;
         padding: 0.1rem;
-        color: rgba(47, 76, 120, 1);
+        color: white;
+        background: linear-gradient(146.81deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.12) 100%);
+        backdrop-filter: blur(5px);
+        border-radius: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
         transition: all 0.2s ease-in;
 
         &:hover {

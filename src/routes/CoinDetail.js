@@ -82,21 +82,21 @@ const CoinDetail = ({location}) => {
     useEffect(fetchDescription, [])
         return ((location.state !== undefined) &&
             <Container>
-                <Card>
-                    <Header>
-                        <img src={location.state.image} />
-                        <h1 className='name'>{location.state.name}</h1>
+                <Card className="fade">
+                    <Header className="fade">
+                        <img src={location.state.image} className="fade"/>
+                        <h1 className='name fade'>{location.state.name}</h1>
                     </Header>
-                           
+                         
                         {data?.length > 0 && (
                         <Line className="line"
                             data={{ 
                                 datasets: [
                                     {
                                         label: 'Price',
-                                        backgroundColor: 'rgba(21, 61, 239, 0.78)',
-                                        borderColor: 'rgba(21, 61, 239, 1)',
-                                        pointRadius: 0,
+                                        backgroundColor: 'rgba(143, 140, 215, 1)',
+                                        borderColor: 'rgba(109, 111, 214, 1)',
+                                        pointRadius: 1,
                                         data: data,
                                     }
                                 ] 
@@ -107,7 +107,7 @@ const CoinDetail = ({location}) => {
                       
                         <small>Last updated: {location.state.updated.slice(0,10)} {location.state.updated.slice(11,19)}</small>
                        
-                        <CardBody>
+                        <CardBody className="fade">
                         
                         <p>{description}</p>
                         </CardBody>
@@ -134,31 +134,33 @@ const Card = styled.div`
     align-items: center;
     flex-wrap: wrap;
     min-width: 0;
-    width: 80vw;
+    width: 65vw;
     margin: 8em 0em;
     transition: all 0.2s ease-in;
+    background: linear-gradient(146.81deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.16) 100%);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
 
     @media (max-width: 768px) {
-        width: 100vw;
+        width: 90vw;
         margin: 6em 0em;
-        border-radius: 0px;
     }
 `;
 const Header = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    height: 5em;
-    width: 100%;
+    height: 4em;
+    width: 75%;
+    margin-top: 1em;
     margin-bottom: 2em;
-    background: rgba(47, 76, 120, 1);
     background-size: cover;
-    border-radius: 15px;
+    
     img {
         position: relative;
-        padding-left: 1.5em;
-        padding-right: 0.75em;
+        padding-right: 0.65em;
         height: 50px;
         width: 50px;
         border-radius: 45px;
@@ -172,6 +174,9 @@ const Header = styled.div`
     .name {
         font-weight: 600;
         font-size: 1.85rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 `
 const CardBody = styled.div`
